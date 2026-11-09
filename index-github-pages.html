@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+:root{--ink:#0F172A;--accent:#4338CA;--accent-d:#3730A3;--bg:#F6F7FB;--tint:#ECEFFB;--text:#1E293B;--muted:#475569;--line:#E3E7F0}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;font-family:'Plus Jakarta Sans',sans-serif;color:var(--text);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:'Plus Jakarta Sans',sans-serif;color:var(--ink);margin:0;line-height:1.2;letter-spacing:-.02em}
+a{color:var(--accent)}
+mark{background:#FEF08A;color:#5F4B00;padding:0 4px;border-radius:4px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+section{padding:80px 0}
+.alt{background:#fff}
+h2{font-size:32px;font-weight:800;margin-bottom:10px}
+.lead{color:var(--muted);margin:0 0 36px;max-width:60ch}
+.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;background:#fff;padding:8px 12px;z-index:9}
+nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 24px;padding:12px 24px;background:rgba(255,255,255,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+nav b{font-weight:800;font-size:18px;color:var(--ink);letter-spacing:-.02em}
+nav div{display:flex;gap:2px 4px;flex-wrap:wrap}
+nav a{text-decoration:none;font-size:14px;font-weight:600;color:var(--muted);padding:6px 12px;border-radius:999px}
+nav a:hover{background:var(--tint);color:var(--accent)}
+main>section:first-child{background:var(--tint);padding:88px 0}
+.hero{display:flex;gap:56px;align-items:center;flex-wrap:wrap}
+.hero>div{flex:1 1 380px}
+.hero h1{font-size:52px;font-weight:800;letter-spacing:-.035em;margin-bottom:18px}
+.hero p{font-size:18px;color:var(--muted);margin:0 0 30px;max-width:50ch}
+.photo{width:100%;max-width:320px;aspect-ratio:17/20;border-radius:160px 160px 28px 28px;background:#fff;border:1px solid var(--line);object-fit:cover;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:14px;margin:0 auto;text-align:center}
+.btn{display:inline-block;padding:13px 26px;border-radius:12px;font-weight:700;font-size:15px;text-decoration:none;margin:0 10px 10px 0;transition:background .2s,color .2s}
+.p{background:var(--accent);color:#fff}.p:hover{background:var(--accent-d)}
+.o{border:1.5px solid var(--ink);color:var(--ink);background:transparent}.o:hover{background:var(--ink);color:#fff}
+a:focus-visible{outline:3px solid #818CF8;outline-offset:3px}
+.about{display:flex;gap:48px;flex-wrap:wrap}
+.about>div{flex:1 1 380px}
+.stats{display:flex;gap:40px;flex-wrap:wrap;margin-top:32px}
+.stats b{display:block;font-size:38px;font-weight:800;color:var(--accent);letter-spacing:-.03em}
+.stats span{font-size:14px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px}
+.alt .card{background:var(--bg)}
+.card h3{font-size:18px;font-weight:700;margin-bottom:12px}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0;list-style:none}
+.tags li{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:4px 12px;font-size:13px;font-weight:600;color:var(--text)}
+.alt .tags li,.alt .card .tags li{background:#fff}
+.img{width:100%;height:190px;object-fit:cover;border-radius:12px;background:var(--tint);margin-bottom:16px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:14px;text-align:center;padding:8px}
+.proj{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:36px;padding:32px;margin-bottom:28px;background:#fff}
+.proj .img{height:100%;min-height:260px;margin:0}
+.proj h3{font-size:26px;font-weight:800;margin-bottom:6px}
+.cat{color:var(--accent);font-weight:700;font-size:14px;margin:0 0 18px}
+.proj dl{margin:0 0 16px;display:grid;grid-template-columns:110px 1fr;gap:8px 16px;font-size:15px}
+.proj dt{font-weight:700;color:var(--ink)}.proj dd{margin:0;color:var(--muted)}
+.proj h4{margin:18px 0 8px;font-size:15px;font-weight:700}
+.proj ul.f{margin:0 0 16px;padding-left:20px;color:var(--muted);font-size:15px}
+.note{font-size:14px;color:var(--muted);border-left:3px solid var(--accent);padding:4px 0 4px 14px;margin:8px 0 0;max-width:80ch}
+.tl{list-style:none;margin:0;padding:0 0 0 22px;border-left:2px solid var(--line)}
+.tl li{position:relative;padding:0 0 26px 8px}
+.tl li::before{content:"";position:absolute;left:-30px;top:7px;width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--tint)}
+.tl h3{font-size:18px;font-weight:700}.tl .org{color:var(--muted);font-size:15px}.tl .per{font-size:14px;color:var(--accent);font-weight:700}
+.tl p{margin:6px 0 0;color:var(--muted);font-size:15px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:56px}
+.two h2{margin-bottom:28px}
+footer{background:var(--ink);color:#CBD5E1;text-align:center;padding:80px 24px}
+footer h2{color:#fff;margin-bottom:12px}
+footer p{margin:0 0 32px}
+#ct{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:720px;margin:0 auto}
+.ci{display:inline-flex;align-items:center;gap:12px;padding:10px 20px 10px 10px;border-radius:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);color:#fff;font-weight:700;font-size:15px;text-decoration:none;transition:background .2s,border-color .2s}
+.ci .ic{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center}
+.ci:hover{background:var(--accent);border-color:var(--accent)}
+.ci.pri{background:#fff;color:var(--ink)}.ci.pri .ic{background:var(--tint);color:var(--accent)}.ci.pri:hover{background:var(--tint);border-color:var(--tint)}
+.ci.off{border-style:dashed;color:#94A3B8;cursor:not-allowed;background:none}.ci.off:hover{background:none;border-color:rgba(255,255,255,.16)}
+footer a:focus-visible{outline-color:#fff}
+@media(max-width:760px){.hero h1{font-size:36px}h2{font-size:26px}section{padding:56px 0}.proj{grid-template-columns:1fr;padding:20px}.proj .img{min-height:200px}.proj dl{grid-template-columns:1fr;gap:2px}.proj dt{margin-top:8px}}
+</style>
+</head>
+<body>
+<a class="skip" href="#tentang">Lompat ke konten</a>
+<nav aria-label="Navigasi utama"><b id="nm"></b><div><a href="#tentang">Tentang</a><a href="#keahlian">Keahlian</a><a href="#proyek">Project</a><a href="#karya">Karya</a><a href="#pengalaman">Pengalaman</a><a href="#pendidikan">Pendidikan</a><a href="#kontak">Kontak</a></div></nav>
+
+<main>
+<section><div class="wrap hero">
+<div><h1 id="hd"></h1><p id="sub"></p><div id="cta"></div></div>
+<div id="foto"></div>
+</div></section>
+
+<section class="alt" id="tentang"><div class="wrap about">
+<div><h2>Tentang Saya</h2></div>
+<div><p id="ab" style="font-size:17px;margin:0"></p><div class="stats" id="stats"></div></div>
+</div></section>
+
+<section id="keahlian"><div class="wrap"><h2>Keahlian</h2><p class="lead">Keahlian teknis di bawah ini didukung project nyata yang saya kerjakan.</p><div class="grid" id="skills"></div></div></section>
+
+<section class="alt" id="proyek"><div class="wrap"><h2>Project Unggulan</h2><p class="lead">Dua project yang paling menunjukkan kemampuan saya membangun sistem digital.</p><div id="projects"></div><p class="note" id="ai"></p></div></section>
+
+<section id="karya"><div class="wrap"><h2>Karya Desain &amp; Konten</h2><p class="lead" id="creadesc"></p><div class="grid" id="creative"></div></div></section>
+
+<section class="alt" id="pengalaman"><div class="wrap two">
+<div><h2>Pengalaman Kerja</h2><ul class="tl" id="exp"></ul></div>
+<div><h2>Magang</h2><ul class="tl" id="intern"></ul><h2 style="margin-top:24px">Organisasi</h2><ul class="tl" id="org"></ul></div>
+</div></section>
+
+<section id="pendidikan"><div class="wrap two">
+<div><h2>Pendidikan</h2><ul class="tl" id="edu"></ul></div>
+<div><h2>Training &amp; Sertifikat</h2><ul class="tl" id="cert"></ul></div>
+</div></section>
+</main>
+
+<footer id="kontak"><h2>Mari berdiskusi.</h2><p>Hubungi saya untuk peluang kerja atau wawancara.</p><div id="ct"></div></footer>
+
+<script>
+// ===== EDIT BAGIAN INI SAJA =====
+// Gambar: gunakan URL gambar langsung (contoh: https://.../foto.jpg), lalu isi photo/img dengan URL tersebut.
+// Semua tulisan [PERLU DIISI] akan tampil dengan stabilo kuning. Ganti semuanya sebelum website dikirim ke recruiter.
+const C = {
+  name: "Juhdi Ibadullah",
+  headline: "Sistem informasi, administrasi, dan solusi digital.",
+  sub: "Mahasiswa S1 Sistem Informasi yang membangun sistem berbasis Google Workspace untuk kebutuhan nyata, didukung kemampuan desain dan konten.",
+  photo: "",
+  about: "Saya mahasiswa S1 Sistem Informasi Universitas Pamulang. Saya belajar membangun sistem digital lewat project nyata, seperti sistem absensi untuk CV Wangwa Globalindo dan sistem liga desa. Latar belakang kerja yang beragam membuat saya terbiasa bekerja mandiri, beradaptasi, dan bertanggung jawab. Saya mencari peluang di bidang administrasi, sistem informasi, atau pengembangan web.",
+  stats: [["2", "Project utama"], ["9", "Outlet pada sistem absensi"], ["4", "Pengalaman kerja"]],
+  skills: [
+    ["Technical & Digital", ["Google Apps Script", "Google Sheets", "HTML", "CSS", "JavaScript"]],
+    ["Administrasi & Produktivitas", ["Google Workspace", "Microsoft Word", "Microsoft Excel", "Microsoft PowerPoint", "Administrasi & pengelolaan data", "Data entry"]],
+    ["Design & Content", ["Canva", "CapCut", "Editing foto", "Editing video", "Content creation"]],
+    ["Tambahan", ["Pengoperasian mesin percetakan", "Navigasi Google Maps/GPS", "Quality Control"]],
+    ["Soft Skills", ["Leadership", "Komunikasi", "Teamwork", "Problem solving", "Disiplin & tanggung jawab", "Teliti & detail", "Adaptasi", "Cepat belajar", "Manajemen waktu", "Orientasi hasil", "Bekerja mandiri"]]
+  ],
+  projects: [
+    {
+      t: "Digital Attendance System",
+      cat: "Project magang · CV Wangwa Globalindo",
+      role: "[PERLU DIISI]",
+      need: "Sistem absensi digital untuk kebutuhan nyata perusahaan, mendukung 9 outlet.",
+      solution: "Aplikasi web absensi dengan Google Sheets sebagai database dan Google Apps Script sebagai sistem dan tampilan.",
+      tech: ["Google Sheets", "Google Apps Script", "HTML", "CSS", "JavaScript"],
+      features: ["Absensi berdasarkan outlet", "Pembatasan radius lokasi (geolocation)", "Foto kamera perangkat sebagai bukti absensi", "Jadwal absensi dan waktu toleransi"],
+      contrib: "[PERLU DIISI]",
+      result: "[PERLU DIISI]",
+      link: "", img: ""
+    },
+    {
+      t: "Sistem Liga Desa Tenjoayu",
+      cat: "Project mandiri / komunitas",
+      role: "[PERLU DIISI]",
+      need: "[PERLU DIISI]",
+      solution: "[PERLU DIISI]",
+      tech: ["[PERLU DIISI]"],
+      features: ["Data klub dan pemain", "Jadwal dan hasil pertandingan", "Klasemen, gol, dan kartu", "Dashboard admin dan dashboard pengunjung"],
+      contrib: "[PERLU DIISI]",
+      result: "",
+      link: "", img: ""
+    }
+  ],
+  aiNote: "Beberapa project dikembangkan dengan AI sebagai asisten coding, debugging, dan belajar. Konsep, kebutuhan, fitur, pengujian, dan validasi hasil saya tentukan sendiri.",
+  creativeDesc: "Karya Canva dan CapCut, serta aktivitas sebagai CapCut Creator. [PERLU DIISI]",
+  creative: [
+    {t: "Desain Canva", cat: "Desain", d: "[PERLU DIISI]", tools: "Canva", img: ""},
+    {t: "Editing video", cat: "Video", d: "[PERLU DIISI]", tools: "CapCut", img: ""},
+    {t: "Content creation", cat: "Konten", d: "[PERLU DIISI]", tools: "CapCut, Canva", img: ""}
+  ],
+  experience: [
+    {t: "Karyawan Percetakan", org: "Daenk CS (PT SHIP Indonesia)", per: "2025–2026", d: "Pengoperasian mesin percetakan."},
+    {t: "Driver Transportasi Online", org: "Grab, Gojek, Maxim", per: "2023–2024", d: "Navigasi menggunakan Google Maps/GPS."},
+    {t: "Tenaga Pengajar", org: "SMA Bani Karim", per: "6 bulan", d: ""},
+    {t: "Peternak Ikan Hias", org: "Usaha mandiri", per: "2020–2021", d: ""}
+  ],
+  internship: [
+    {t: "Magang · Pengembang Digital Attendance System", org: "CV Wangwa Globalindo", per: "[PERLU DIISI]", d: "Menerapkan coding untuk menyelesaikan kebutuhan absensi perusahaan. Detail ada di bagian Project Unggulan."}
+  ],
+  organization: [
+    {t: "Ketua OSIS", org: "MTs", per: "1 tahun", d: "Pengalaman memimpin, berkomunikasi, berkoordinasi, dan bertanggung jawab dalam tim."},
+    {t: "Anggota OSIS", org: "SMA", per: "", d: "Terlibat dalam kegiatan organisasi siswa."}
+  ],
+  education: [
+    {t: "S1 Sistem Informasi", org: "Universitas Pamulang (UNPAM)", per: "2025–Sekarang", d: ""},
+    {t: "MA Assalimiyah", org: "", per: "2017–2020", d: ""}
+  ],
+  certs: [
+    {t: "Pelatihan Administrasi Perkantoran berbasis Google Workspace", org: "Training", per: "", d: ""},
+    {t: "Pengenalan dan Praktik Affiliate Marketing Shopee bagi Pemula", org: "BBPVP Makassar", per: "31 Juli 2026", d: "No. Sertifikat 2608036FBEC4DE"}
+  ],
+  contact: {wa: "https://wa.me/085714453013", email: "", linkedin: "", github: "", instagram: "", cv: ""}
+};
+// ===== SELESAI =====
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const t = s => esc(s).replace(/\[PERLU DIISI\]/g, "<mark>[PERLU DIISI]</mark>");
+const url = u => /^(https?:|mailto:|tel:)/.test(u) ? esc(u) : "";
+const src = u => /^(https?:|data:)/.test(String(u)) ? String(u) : "";
+const pic = (u, alt) => u && src(u) ? `<img class="img" src="${esc(src(u))}" alt="${esc(alt)}" loading="lazy">` : `<div class="img" role="img" aria-label="Placeholder ${esc(alt)}">[Gambar: ${t(alt)}]</div>`;
+const tags = a => `<ul class="tags">${a.map(x => `<li>${t(x)}</li>`).join("")}</ul>`;
+const tl = a => a.map(x => `<li><h3>${t(x.t)}</h3>${x.org ? `<div class="org">${t(x.org)}</div>` : ""}${x.per ? `<div class="per">${t(x.per)}</div>` : ""}${x.d ? `<p>${t(x.d)}</p>` : ""}</li>`).join("");
+
+document.title = "Portofolio - " + C.name;
+$("nm").textContent = C.name;
+$("hd").textContent = C.headline;
+$("sub").textContent = C.sub;
+$("foto").innerHTML = C.photo && src(C.photo) ? `<img class="photo" src="${esc(src(C.photo))}" alt="Foto ${esc(C.name)}">` : `<div class="photo">[Foto formal Anda]</div>`;
+$("cta").innerHTML = `<a class="btn p" href="#proyek">Lihat Project</a>` + (url(C.contact.cv) ? `<a class="btn o" href="${url(C.contact.cv)}" target="_blank" rel="noopener">Download CV</a>` : "") + `<a class="btn o" href="#kontak">Kontak</a>`;
+$("ab").textContent = C.about;
+$("stats").innerHTML = C.stats.map(s => `<div><b>${esc(s[0])}</b><span>${esc(s[1])}</span></div>`).join("");
+$("skills").innerHTML = C.skills.map(s => `<div class="card"><h3>${esc(s[0])}</h3>${tags(s[1])}</div>`).join("");
+
+$("projects").innerHTML = C.projects.map(p => {
+  const row = (k, v) => v ? `<dt>${k}</dt><dd>${t(v)}</dd>` : "";
+  return `<article class="card proj">${pic(p.img, "Screenshot " + p.t)}<div>
+<h3>${t(p.t)}</h3><p class="cat">${t(p.cat)}</p>
+<dl>${row("Peran", p.role)}${row("Kebutuhan", p.need)}${row("Solusi", p.solution)}${row("Kontribusi", p.contrib)}${row("Hasil", p.result)}</dl>
+<h4>Fitur</h4><ul class="f">${p.features.map(f => `<li>${t(f)}</li>`).join("")}</ul>
+<h4>Teknologi</h4>${tags(p.tech)}
+${url(p.link) ? `<p style="margin:16px 0 0"><a href="${url(p.link)}" target="_blank" rel="noopener">Lihat demo</a></p>` : ""}
+</div></article>`;
+}).join("");
+$("ai").textContent = C.aiNote;
+if (!C.aiNote) $("ai").remove();
+
+$("creadesc").innerHTML = t(C.creativeDesc);
+$("creative").innerHTML = C.creative.map(c => `<article class="card">${pic(c.img, c.t)}<h3>${t(c.t)}</h3><p>${t(c.cat)} · ${t(c.tools)}</p><p style="margin-top:6px">${t(c.d)}</p></article>`).join("");
+
+$("exp").innerHTML = tl(C.experience);
+$("intern").innerHTML = tl(C.internship);
+$("org").innerHTML = tl(C.organization);
+$("edu").innerHTML = tl(C.education);
+$("cert").innerHTML = tl(C.certs);
+
+const k = C.contact;
+// Ubah ke false setelah semua kontak terisi agar tombol kosong disembunyikan.
+const SHOW_EMPTY_CONTACT = true;
+const svg = d => `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+const IC = {
+  wa: svg('<path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>'),
+  mail: svg('<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>'),
+  in: svg('<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>'),
+  gh: svg('<path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>'),
+  ig: svg('<rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>'),
+  cv: svg('<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>')
+};
+const all = [["WhatsApp", k.wa, "wa", "pri"], ["Email", k.email, "mail", ""], ["LinkedIn", k.linkedin, "in", ""], ["GitHub", k.github, "gh", ""], ["Instagram", k.instagram, "ig", ""], ["Unduh CV", k.cv, "cv", ""]];
+$("ct").innerHTML = all.map(x => {
+  const u = url(x[1]);
+  const inner = `<span class="ic">${IC[x[2]]}</span>${x[0]}`;
+  if (u) return `<a class="ci ${x[3]}" href="${u}"${/^https?:/.test(u) ? ' target="_blank" rel="noopener"' : ""}>${inner}</a>`;
+  return SHOW_EMPTY_CONTACT ? `<span class="ci off" title="Belum diisi">${inner}<small>(belum diisi)</small></span>` : "";
+}).join("");
+// Navigasi anchor dibuat smooth dan tetap di halaman yang sama.
+document.addEventListener("click", e => {
+  const a = e.target.closest('a[href^="#"]');
+  if (!a) return;
+  const el = document.getElementById(a.getAttribute("href").slice(1));
+  if (!el) return;
+  e.preventDefault();
+  el.scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"});
+});
+</script>
+</body>
+</html>
