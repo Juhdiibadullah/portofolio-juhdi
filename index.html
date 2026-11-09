@@ -23,7 +23,7 @@ nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap
 nav b{font-weight:800;font-size:18px;color:var(--ink);letter-spacing:-.02em}
 nav div{display:flex;gap:2px 4px;flex-wrap:wrap}
 nav a{text-decoration:none;font-size:14px;font-weight:600;color:var(--muted);padding:6px 12px;border-radius:999px}
-nav a:hover{background:var(--tint);color:var(--accent)}
+@media(hover:hover){nav a:hover{background:var(--tint);color:var(--accent)}}
 main>section:first-child{background:var(--tint);padding:88px 0}
 .hero{display:flex;gap:56px;align-items:center;flex-wrap:wrap}
 .hero>div{flex:1 1 380px}
@@ -74,7 +74,36 @@ footer p{margin:0 0 32px}
 .ci.pri{background:#fff;color:var(--ink)}.ci.pri .ic{background:var(--tint);color:var(--accent)}.ci.pri:hover{background:var(--tint);border-color:var(--tint)}
 .ci.off{border-style:dashed;color:#94A3B8;cursor:not-allowed;background:none}.ci.off:hover{background:none;border-color:rgba(255,255,255,.16)}
 footer a:focus-visible{outline-color:#fff}
-@media(max-width:760px){.hero h1{font-size:36px}h2{font-size:26px}section{padding:56px 0}.proj{grid-template-columns:1fr;padding:20px}.proj .img{min-height:200px}.proj dl{grid-template-columns:1fr;gap:2px}.proj dt{margin-top:8px}}
+@media(max-width:760px){
+.wrap{padding:0 20px}
+section{padding:56px 0}
+main>section:first-child{padding:44px 0 56px}
+.hero{gap:36px}
+.hero h1{font-size:34px;letter-spacing:-.03em}
+.hero p{font-size:16px;margin-bottom:24px}
+h2{font-size:26px}
+.btn{padding:12px 22px}
+.proj{grid-template-columns:1fr;padding:20px}
+.proj .img{min-height:200px}
+.proj dl{grid-template-columns:1fr;gap:2px}
+.proj dt{margin-top:8px}
+
+/* Navigasi: satu baris, bisa digeser */
+html{scroll-padding-top:84px}
+nav{flex-direction:column;flex-wrap:nowrap;align-items:stretch;gap:2px;padding:10px 0 6px}
+nav b{padding:0 20px;font-size:17px}
+nav div{flex-wrap:nowrap;overflow-x:auto;gap:4px;padding:4px 20px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+nav div::-webkit-scrollbar{display:none}
+nav a{flex:none;white-space:nowrap;font-size:13.5px;padding:6px 14px}
+
+/* Kontak: grid 2 kolom, WhatsApp selebar penuh */
+footer{padding:56px 20px}
+#ct{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ci{min-width:0;gap:10px;padding:8px 14px 8px 8px;font-size:14px}
+.ci .ic{width:34px;height:34px}
+.ci.pri{grid-column:1/-1;justify-content:center}
+.ci.off small{display:none}
+}
 </style>
 </head>
 <body>
