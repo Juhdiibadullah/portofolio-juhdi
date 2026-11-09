@@ -31,8 +31,9 @@ main>section:first-child{background:var(--tint);padding:88px 0}
 .hero p{font-size:18px;color:var(--muted);margin:0 0 30px;max-width:50ch}
 .photo{width:100%;max-width:320px;aspect-ratio:17/20;border-radius:160px 160px 28px 28px;background:#fff;border:1px solid var(--line);object-fit:cover;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:14px;margin:0 auto;text-align:center}
 .btn{display:inline-block;padding:13px 26px;border-radius:12px;font-weight:700;font-size:15px;text-decoration:none;margin:0 10px 10px 0;transition:background .2s,color .2s}
-.p{background:var(--accent);color:#fff}.p:hover{background:var(--accent-d)}
-.o{border:1.5px solid var(--ink);color:var(--ink);background:transparent}.o:hover{background:var(--ink);color:#fff}
+.p{background:var(--accent);color:#fff}
+.o{border:1.5px solid var(--ink);color:var(--ink);background:transparent}
+@media(hover:hover){.p:hover{background:var(--accent-d)}.o:hover{background:var(--ink);color:#fff}}
 a:focus-visible{outline:3px solid #818CF8;outline-offset:3px}
 .about{display:flex;gap:48px;flex-wrap:wrap}
 .about>div{flex:1 1 380px}
@@ -70,9 +71,9 @@ footer p{margin:0 0 32px}
 #ct{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:720px;margin:0 auto}
 .ci{display:inline-flex;align-items:center;gap:12px;padding:10px 20px 10px 10px;border-radius:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);color:#fff;font-weight:700;font-size:15px;text-decoration:none;transition:background .2s,border-color .2s}
 .ci .ic{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center}
-.ci:hover{background:var(--accent);border-color:var(--accent)}
-.ci.pri{background:#fff;color:var(--ink)}.ci.pri .ic{background:var(--tint);color:var(--accent)}.ci.pri:hover{background:var(--tint);border-color:var(--tint)}
-.ci.off{border-style:dashed;color:#94A3B8;cursor:not-allowed;background:none}.ci.off:hover{background:none;border-color:rgba(255,255,255,.16)}
+.ci.pri{background:#fff;color:var(--ink)}.ci.pri .ic{background:var(--tint);color:var(--accent)}
+.ci.off{border-style:dashed;color:#94A3B8;cursor:not-allowed;background:none}
+@media(hover:hover){.ci:hover{background:var(--accent);border-color:var(--accent)}.ci.pri:hover{background:var(--tint);border-color:var(--tint)}.ci.off:hover{background:none;border-color:rgba(255,255,255,.16)}}
 footer a:focus-visible{outline-color:#fff}
 @media(max-width:760px){
 .wrap{padding:0 20px}
@@ -87,16 +88,12 @@ h2{font-size:26px}
 .proj .img{min-height:200px}
 .proj dl{grid-template-columns:1fr;gap:2px}
 .proj dt{margin-top:8px}
-
-/* Navigasi: satu baris, bisa digeser */
 html{scroll-padding-top:84px}
 nav{flex-direction:column;flex-wrap:nowrap;align-items:stretch;gap:2px;padding:10px 0 6px}
 nav b{padding:0 20px;font-size:17px}
 nav div{flex-wrap:nowrap;overflow-x:auto;gap:4px;padding:4px 20px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 nav div::-webkit-scrollbar{display:none}
 nav a{flex:none;white-space:nowrap;font-size:13.5px;padding:6px 14px}
-
-/* Kontak: grid 2 kolom, WhatsApp selebar penuh */
 footer{padding:56px 20px}
 #ct{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .ci{min-width:0;gap:10px;padding:8px 14px 8px 8px;font-size:14px}
@@ -212,7 +209,7 @@ const C = {
     {t: "Pelatihan Administrasi Perkantoran berbasis Google Workspace", org: "Training", per: "", d: ""},
     {t: "Pengenalan dan Praktik Affiliate Marketing Shopee bagi Pemula", org: "BBPVP Makassar", per: "31 Juli 2026", d: "No. Sertifikat 2608036FBEC4DE"}
   ],
-  contact: {wa: "https://wa.me/085714453013", email: "", linkedin: "", github: "", instagram: "", cv: ""}
+  contact: {wa: "https://wa.me/6285714453013", email: "", linkedin: "", github: "", instagram: "", cv: ""}
 };
 // ===== SELESAI =====
 
