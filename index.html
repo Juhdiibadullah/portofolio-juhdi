@@ -57,6 +57,7 @@ a:focus-visible{outline:3px solid #818CF8;outline-offset:3px}
 .proj dt{font-weight:700;color:var(--ink)}.proj dd{margin:0;color:var(--muted)}
 .proj h4{margin:18px 0 8px;font-size:15px;font-weight:700}
 .proj ul.f{margin:0 0 16px;padding-left:20px;color:var(--muted);font-size:15px}
+.proj dd ul.f{margin:0}
 .note{font-size:14px;color:var(--muted);border-left:3px solid var(--accent);padding:4px 0 4px 14px;margin:8px 0 0;max-width:80ch}
 .tl{list-style:none;margin:0;padding:0 0 0 22px;border-left:2px solid var(--line)}
 .tl li{position:relative;padding:0 0 26px 8px}
@@ -146,10 +147,10 @@ const C = {
   headline: "Sistem informasi, administrasi, dan solusi digital.",
   sub: "Mahasiswa S1 Sistem Informasi yang membangun sistem berbasis Google Workspace untuk kebutuhan nyata, didukung kemampuan desain dan konten.",
   photo: "",
-  about: "Saya mahasiswa S1 Sistem Informasi Universitas Pamulang. Saya belajar membangun sistem digital lewat project nyata, seperti sistem absensi untuk CV Wangwa Globalindo dan sistem liga desa. Latar belakang kerja yang beragam membuat saya terbiasa bekerja mandiri, beradaptasi, dan bertanggung jawab. Saya mencari peluang di bidang administrasi, sistem informasi, atau pengembangan web.",
+  about: "Saya mahasiswa S1 Sistem Informasi Universitas Pamulang. Saya belajar membangun sistem digital lewat project nyata, seperti sistem absensi untuk CV Raja Wangwa Globalindo dan sistem liga desa. Latar belakang kerja yang beragam membuat saya terbiasa bekerja mandiri, beradaptasi, dan bertanggung jawab. Saya mencari peluang di bidang administrasi, sistem informasi, atau pengembangan web.",
   stats: [["2", "Project utama"], ["9", "Outlet pada sistem absensi"], ["4", "Pengalaman kerja"]],
   skills: [
-    ["Technical & Digital", ["Google Apps Script", "Google Sheets", "HTML", "CSS", "JavaScript"]],
+    ["Technical & Digital", ["Google Apps Script", "Google Sheets", "HTML", "CSS", "JavaScript", "GitHub Pages"]],
     ["Administrasi & Produktivitas", ["Google Workspace", "Microsoft Word", "Microsoft Excel", "Microsoft PowerPoint", "Administrasi & pengelolaan data", "Data entry"]],
     ["Design & Content", ["Canva", "CapCut", "Editing foto", "Editing video", "Content creation"]],
     ["Tambahan", ["Pengoperasian mesin percetakan", "Navigasi Google Maps/GPS", "Quality Control"]],
@@ -158,15 +159,25 @@ const C = {
   projects: [
     {
       t: "Digital Attendance System",
-      cat: "Project magang · CV Wangwa Globalindo",
-      role: "[PERLU DIISI]",
-      need: "Sistem absensi digital untuk kebutuhan nyata perusahaan, mendukung 9 outlet.",
-      solution: "Aplikasi web absensi dengan Google Sheets sebagai database dan Google Apps Script sebagai sistem dan tampilan.",
-      tech: ["Google Sheets", "Google Apps Script", "HTML", "CSS", "JavaScript"],
-      features: ["Absensi berdasarkan outlet", "Pembatasan radius lokasi (geolocation)", "Foto kamera perangkat sebagai bukti absensi", "Jadwal absensi dan waktu toleransi"],
-      contrib: "[PERLU DIISI]",
-      result: "[PERLU DIISI]",
-      link: "", img: ""
+      cat: "Project magang · CV Raja Wangwa Globalindo",
+      role: "Web Developer / System Developer",
+      need: "CV Raja Wangwa Globalindo membutuhkan sistem absensi digital untuk mencatat kehadiran karyawan secara lebih terstruktur dan mendukung pengelolaan absensi di beberapa outlet.",
+      solution: "Aplikasi web absensi dengan Google Sheets sebagai database dan Google Apps Script sebagai backend. Dilengkapi dashboard admin untuk mengelola karyawan, outlet, shift, jadwal, izin, absensi, dan laporan.",
+      tech: ["Google Apps Script", "Google Sheets", "HTML", "CSS", "JavaScript", "GitHub", "GitHub Pages"],
+      features: ["Absensi berdasarkan outlet", "Validasi radius lokasi (geolocation)", "Foto kamera perangkat sebagai bukti absensi", "Login dan autentikasi pengguna", "Dashboard admin", "Data karyawan dan outlet", "Pengaturan shift dan jadwal kerja", "Rotasi jadwal otomatis", "Pengajuan izin dan sakit", "Laporan absensi", "Notifikasi aktivitas absensi", "Tampilan responsif desktop dan mobile"],
+      contrib: [
+        "Merancang dan mengembangkan antarmuka sistem absensi",
+        "Mengembangkan login dan autentikasi pengguna",
+        "Membuat dashboard admin untuk memantau aktivitas absensi",
+        "Mengembangkan absensi berdasarkan outlet, validasi radius lokasi, dan fitur kamera",
+        "Membuat pengelolaan data karyawan, outlet, shift, dan jadwal kerja",
+        "Mengembangkan rotasi jadwal otomatis, pengajuan izin/sakit, dan laporan absensi",
+        "Menghubungkan frontend dengan Google Apps Script dan Google Sheets",
+        "Mengoptimalkan tampilan untuk desktop dan mobile",
+        "Deployment frontend menggunakan GitHub Pages"
+      ],
+      result: "Sistem absensi berbasis web yang terintegrasi dengan Google Sheets dan Google Apps Script, sehingga pencatatan, pemantauan, dan pengelolaan absensi bisa dilakukan secara digital dalam satu sistem.",
+      link: "https://juhdiibadullah.github.io/Absensi_CVRajaWangwaGlobalindo/", img: ""
     },
     {
       t: "Sistem Liga Desa Tenjoayu",
@@ -195,7 +206,7 @@ const C = {
     {t: "Peternak Ikan Hias", org: "Usaha mandiri", per: "2020–2021", d: ""}
   ],
   internship: [
-    {t: "Magang · Pengembang Digital Attendance System", org: "CV Wangwa Globalindo", per: "[PERLU DIISI]", d: "Menerapkan coding untuk menyelesaikan kebutuhan absensi perusahaan. Detail ada di bagian Project Unggulan."}
+    {t: "Magang · Web Developer / System Developer", org: "CV Raja Wangwa Globalindo", per: "[PERLU DIISI]", d: "Mengembangkan Digital Attendance System untuk 9 outlet: absensi berbasis lokasi dan kamera, dashboard admin, jadwal dan rotasi shift, izin/sakit, serta laporan.", link: "https://juhdiibadullah.github.io/Absensi_CVRajaWangwaGlobalindo/", linkText: "Buka live demo"}
   ],
   organization: [
     {t: "Ketua OSIS", org: "MTs", per: "1 tahun", d: "Pengalaman memimpin, berkomunikasi, berkoordinasi, dan bertanggung jawab dalam tim."},
@@ -220,7 +231,7 @@ const url = u => /^(https?:|mailto:|tel:)/.test(u) ? esc(u) : "";
 const src = u => /^(https?:|data:)/.test(String(u)) ? String(u) : "";
 const pic = (u, alt) => u && src(u) ? `<img class="img" src="${esc(src(u))}" alt="${esc(alt)}" loading="lazy">` : `<div class="img" role="img" aria-label="Placeholder ${esc(alt)}">[Gambar: ${t(alt)}]</div>`;
 const tags = a => `<ul class="tags">${a.map(x => `<li>${t(x)}</li>`).join("")}</ul>`;
-const tl = a => a.map(x => `<li><h3>${t(x.t)}</h3>${x.org ? `<div class="org">${t(x.org)}</div>` : ""}${x.per ? `<div class="per">${t(x.per)}</div>` : ""}${x.d ? `<p>${t(x.d)}</p>` : ""}</li>`).join("");
+const tl = a => a.map(x => `<li><h3>${t(x.t)}</h3>${x.org ? `<div class="org">${t(x.org)}</div>` : ""}${x.per ? `<div class="per">${t(x.per)}</div>` : ""}${x.d ? `<p>${t(x.d)}</p>` : ""}${x.link && url(x.link) ? `<p><a href="${url(x.link)}" target="_blank" rel="noopener">${esc(x.linkText || "Lihat")}</a></p>` : ""}</li>`).join("");
 
 document.title = "Portofolio - " + C.name;
 $("nm").textContent = C.name;
@@ -233,7 +244,7 @@ $("stats").innerHTML = C.stats.map(s => `<div><b>${esc(s[0])}</b><span>${esc(s[1
 $("skills").innerHTML = C.skills.map(s => `<div class="card"><h3>${esc(s[0])}</h3>${tags(s[1])}</div>`).join("");
 
 $("projects").innerHTML = C.projects.map(p => {
-  const row = (k, v) => v ? `<dt>${k}</dt><dd>${t(v)}</dd>` : "";
+  const row = (k, v) => v ? `<dt>${k}</dt><dd>${Array.isArray(v) ? `<ul class="f">${v.map(i => `<li>${t(i)}</li>`).join("")}</ul>` : t(v)}</dd>` : "";
   return `<article class="card proj">${pic(p.img, "Screenshot " + p.t)}<div>
 <h3>${t(p.t)}</h3><p class="cat">${t(p.cat)}</p>
 <dl>${row("Peran", p.role)}${row("Kebutuhan", p.need)}${row("Solusi", p.solution)}${row("Kontribusi", p.contrib)}${row("Hasil", p.result)}</dl>
