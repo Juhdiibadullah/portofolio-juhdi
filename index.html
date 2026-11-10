@@ -58,6 +58,21 @@ a:focus-visible{outline:3px solid #818CF8;outline-offset:3px}
 .proj h4{margin:18px 0 8px;font-size:15px;font-weight:700}
 .proj ul.f{margin:0 0 16px;padding-left:20px;color:var(--muted);font-size:15px}
 .proj dd ul.f{margin:0}
+.proj>.gal{align-self:start;position:sticky;top:96px;min-width:0}
+.proj .gal .img{height:auto;min-height:0;aspect-ratio:16/10;margin:0}
+.sl{position:relative;overflow:hidden;border-radius:12px;border:1px solid var(--line);background:var(--tint);touch-action:pan-y}
+.tr{display:flex;transition:transform .45s cubic-bezier(.4,0,.2,1)}
+@media(prefers-reduced-motion:reduce){.tr{transition:none}}
+.sl-i{flex:0 0 100%;min-width:0}
+.sl-i img{display:block;width:100%;aspect-ratio:16/10;object-fit:contain;user-select:none;-webkit-user-drag:none}
+.ar{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.92);color:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;transition:background .2s,color .2s}
+.ar.pv{left:10px}.ar.nx{right:10px}
+@media(hover:hover){.ar:hover{background:var(--accent);color:#fff;border-color:var(--accent)}}
+.ar:focus-visible,.dots button:focus-visible{outline:3px solid #818CF8;outline-offset:2px}
+.cap{font-size:13px;color:var(--muted);margin:8px 0 0;min-height:1.5em;text-align:center}
+.dots{display:flex;justify-content:center;gap:8px;margin-top:6px}
+.dots button{width:8px;height:8px;border-radius:999px;border:0;padding:0;background:var(--line);cursor:pointer;transition:width .25s,background .25s}
+.dots button.on{width:24px;background:var(--accent)}
 .note{font-size:14px;color:var(--muted);border-left:3px solid var(--accent);padding:4px 0 4px 14px;margin:8px 0 0;max-width:80ch}
 .tl{list-style:none;margin:0;padding:0 0 0 22px;border-left:2px solid var(--line)}
 .tl li{position:relative;padding:0 0 26px 8px}
@@ -90,6 +105,7 @@ h2{font-size:26px}
 .proj dl{grid-template-columns:1fr;gap:2px}
 .proj dt{margin-top:8px}
 html{scroll-padding-top:84px}
+.proj>.gal{position:static}
 nav{flex-direction:column;flex-wrap:nowrap;align-items:stretch;gap:2px;padding:10px 0 6px}
 nav b{padding:0 20px;font-size:17px}
 nav div{flex-wrap:nowrap;overflow-x:auto;gap:4px;padding:4px 20px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
@@ -177,7 +193,10 @@ const C = {
         "Deployment frontend menggunakan GitHub Pages"
       ],
       result: "Sistem absensi berbasis web yang terintegrasi dengan Google Sheets dan Google Apps Script, sehingga pencatatan, pemantauan, dan pengelolaan absensi bisa dilakukan secara digital dalam satu sistem.",
-      link: "https://juhdiibadullah.github.io/Absensi_CVRajaWangwaGlobalindo/", img: ""
+      link: "https://juhdiibadullah.github.io/Absensi_CVRajaWangwaGlobalindo/",
+      // Foto: isi dengan path/URL gambar, c = keterangan (opsional). Contoh:
+      // imgs: [{s: "images/absensi-dashboard.png", c: "Dashboard admin"}, {s: "images/absensi-mobile.png", c: "Absensi di HP"}, {s: "images/kerja.jpg", c: "Saat bekerja"}]
+      imgs: []
     },
     {
       t: "Sistem Liga Desa Tenjoayu",
@@ -189,7 +208,7 @@ const C = {
       features: ["Data klub dan pemain", "Jadwal dan hasil pertandingan", "Klasemen, gol, dan kartu", "Dashboard admin dan dashboard pengunjung"],
       contrib: "[PERLU DIISI]",
       result: "",
-      link: "", img: ""
+      link: "", imgs: []
     }
   ],
   aiNote: "Beberapa project dikembangkan dengan AI sebagai asisten coding, debugging, dan belajar. Konsep, kebutuhan, fitur, pengujian, dan validasi hasil saya tentukan sendiri.",
@@ -228,8 +247,16 @@ const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const t = s => esc(s).replace(/\[PERLU DIISI\]/g, "<mark>[PERLU DIISI]</mark>");
 const url = u => /^(https?:|mailto:|tel:)/.test(u) ? esc(u) : "";
-const src = u => /^(https?:|data:)/.test(String(u)) ? String(u) : "";
+const src = u => /^(https?:|data:|[\w.\-\/]+\.(jpe?g|png|webp|gif|svg)$)/i.test(String(u)) ? String(u) : "";
 const pic = (u, alt) => u && src(u) ? `<img class="img" src="${esc(src(u))}" alt="${esc(alt)}" loading="lazy">` : `<div class="img" role="img" aria-label="Placeholder ${esc(alt)}">[Gambar: ${t(alt)}]</div>`;
+const gal = p => {
+  const L = (p.imgs || []).map(x => typeof x === "string" ? {s: x, c: ""} : {s: x.s, c: x.c || ""}).filter(x => src(x.s));
+  if (!L.length) return `<div class="gal"><div class="img" role="img" aria-label="Placeholder ${esc(p.t)}">[Foto: ${t(p.t)}]</div></div>`;
+  const many = L.length > 1;
+  return `<div class="gal" data-i="0" data-n="${L.length}" data-c="${esc(JSON.stringify(L.map(x => x.c)))}" role="group" aria-roledescription="carousel" aria-label="Foto ${esc(p.t)}">
+<div class="sl"><div class="tr">${L.map((x, i) => `<div class="sl-i"><img src="${esc(src(x.s))}" alt="${esc(x.c || p.t + " " + (i + 1))}" draggable="false"></div>`).join("")}</div>${many ? `<button type="button" class="ar pv" aria-label="Foto sebelumnya"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg></button><button type="button" class="ar nx" aria-label="Foto berikutnya"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>` : ""}</div>
+<p class="cap" aria-live="polite">${esc(L[0].c)}</p>${many ? `<div class="dots">${L.map((x, i) => `<button type="button" class="${i ? "" : "on"}" data-go="${i}" aria-label="Foto ${i + 1}"></button>`).join("")}</div>` : ""}</div>`;
+};
 const tags = a => `<ul class="tags">${a.map(x => `<li>${t(x)}</li>`).join("")}</ul>`;
 const tl = a => a.map(x => `<li><h3>${t(x.t)}</h3>${x.org ? `<div class="org">${t(x.org)}</div>` : ""}${x.per ? `<div class="per">${t(x.per)}</div>` : ""}${x.d ? `<p>${t(x.d)}</p>` : ""}${x.link && url(x.link) ? `<p><a href="${url(x.link)}" target="_blank" rel="noopener">${esc(x.linkText || "Lihat")}</a></p>` : ""}</li>`).join("");
 
@@ -245,7 +272,7 @@ $("skills").innerHTML = C.skills.map(s => `<div class="card"><h3>${esc(s[0])}</h
 
 $("projects").innerHTML = C.projects.map(p => {
   const row = (k, v) => v ? `<dt>${k}</dt><dd>${Array.isArray(v) ? `<ul class="f">${v.map(i => `<li>${t(i)}</li>`).join("")}</ul>` : t(v)}</dd>` : "";
-  return `<article class="card proj">${pic(p.img, "Screenshot " + p.t)}<div>
+  return `<article class="card proj">${gal(p)}<div>
 <h3>${t(p.t)}</h3><p class="cat">${t(p.cat)}</p>
 <dl>${row("Peran", p.role)}${row("Kebutuhan", p.need)}${row("Solusi", p.solution)}${row("Kontribusi", p.contrib)}${row("Hasil", p.result)}</dl>
 <h4>Fitur</h4><ul class="f">${p.features.map(f => `<li>${t(f)}</li>`).join("")}</ul>
@@ -284,6 +311,31 @@ $("ct").innerHTML = all.map(x => {
   if (u) return `<a class="ci ${x[3]}" href="${u}"${/^https?:/.test(u) ? ' target="_blank" rel="noopener"' : ""}>${inner}</a>`;
   return SHOW_EMPTY_CONTACT ? `<span class="ci off" title="Belum diisi">${inner}<small>(belum diisi)</small></span>` : "";
 }).join("");
+// Galeri: tombol panah, titik, dan geser (swipe) untuk berpindah foto.
+const slide = (g, i) => {
+  const n = +g.dataset.n; i = (i + n) % n; g.dataset.i = i;
+  g.querySelector(".tr").style.transform = `translateX(-${i * 100}%)`;
+  g.querySelector(".cap").textContent = JSON.parse(g.dataset.c)[i] || "";
+  g.querySelectorAll(".dots button").forEach((d, j) => d.classList.toggle("on", j === i));
+};
+document.addEventListener("click", e => {
+  const b = e.target.closest(".ar, .dots button");
+  if (!b) return;
+  const g = b.closest(".gal"), i = +g.dataset.i;
+  slide(g, b.matches(".pv") ? i - 1 : b.matches(".nx") ? i + 1 : +b.dataset.go);
+});
+let sx = null;
+document.addEventListener("pointerdown", e => { sx = e.target.closest(".sl") ? e.clientX : null; });
+document.addEventListener("pointerup", e => {
+  const sl = e.target.closest(".sl");
+  if (sx === null || !sl || +sl.closest(".gal").dataset.n < 2) { sx = null; return; }
+  const dx = e.clientX - sx; sx = null;
+  if (Math.abs(dx) > 40) { const g = sl.closest(".gal"); slide(g, +g.dataset.i + (dx < 0 ? 1 : -1)); }
+});
+document.addEventListener("keydown", e => {
+  const g = e.target.closest && e.target.closest(".gal");
+  if (g && +g.dataset.n > 1 && (e.key === "ArrowLeft" || e.key === "ArrowRight")) slide(g, +g.dataset.i + (e.key === "ArrowRight" ? 1 : -1));
+});
 // Navigasi anchor dibuat smooth dan tetap di halaman yang sama.
 document.addEventListener("click", e => {
   const a = e.target.closest('a[href^="#"]');
